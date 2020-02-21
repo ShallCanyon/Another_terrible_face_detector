@@ -1,12 +1,12 @@
-import Unused_MainUI
-import mainFunction
+import camera_detect
+import startupDialog
 import sys
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QDialog
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    # win = MainUI.win()
-    win = mainFunction.win()
+    # win = camera_detect.win()
+    win = startupDialog.win()
     win.show()
     sys.exit(app.exec_())
