@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import CameraUI
-from VideoFaceDetect import Video
+from VideoFaceFunctions import Video
 from configparser import ConfigParser
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QMainWindow, QLabel, QPushButton, QFileDialog, QInputDialog
@@ -54,7 +54,7 @@ class win(QMainWindow):
         try:
             # 获取视频帧
             self.video.captureFrame()
-            # 在getFrameData中转换格式并识别人脸
+            # 在getDetectedFrame中转换格式并识别人脸
             self.ui.videoFrame.setPixmap(
                 self.video.toPixmap(
                     self.video.getDetectedFrame(self.confidence, self.idenRecog)))
@@ -87,9 +87,9 @@ class win(QMainWindow):
                     endY = _endY + centralY  # if _endY-centralY >= 0 else _endY
                     # 没有这一步转换会导致截取的图片发蓝
                     img = cv2.cvtColor(self.video.currentFrame, cv2.COLOR_BGR2RGB)
-                    self.video.faceStorage(img, startX, startY,
-                                           endX - startX, endY - startY,
-                                           self.savingPath)
+                    self.video.faceSave(img, startX, startY,
+                                        endX - startX, endY - startY,
+                                        self.savingPath)
         else:
             print("[INFO] Capture failed")
 

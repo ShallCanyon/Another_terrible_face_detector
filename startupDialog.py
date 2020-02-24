@@ -14,11 +14,10 @@ class win(QDialog):
 
     def openCameraDetect(self):
         self.close()
-        camera_ui = camera_detect.win()
-        camera_ui.show()
+        self.camera_ui = camera_detect.win()
+        self.camera_ui.show()
 
     def openPictureDetect(self):
         self.close()
-        # TODO: UI not work properly
-        picture_ui = picture_detect.win()
-        picture_ui.show()
+        self.picture_ui = picture_detect.win()
+        self.picture_ui.show()
